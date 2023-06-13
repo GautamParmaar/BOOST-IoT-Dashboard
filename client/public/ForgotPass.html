@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/public/css/SignUpStyle.css" type="text/css"/>
+    <!-- <script src="https://kit.fontawesome.com/77c219b89e.js" crossorigin="anonymous"></script> -->
+    <title>Reset Password</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- signup form -->
+      <form action="/ForgotPass" id="form" class="form" method="post">
+        <a href="" style="text-decoration: none;">
+        <h2><strong id="Boost-IoT-Club">Boost-IoT-Club</strong></h2></a>
+        <h2>Reset Password</h2>
+        <p>Write the correct email address and reset your account password</p>
+        <div class="form-control-forgot">
+          <label for="email">Email</label>
+          <input type="text" name="useremail"  id="email" placeholder="Enter email" autofocus required />
+          <small>Error message</small>
+        </div>
+        <div  id="forgot-btn">
+            <button type="submit" id="submit-btn">Send</button></a>
+        </div>
+        
+      </form>
+    </div>
+    <script type="module" src="/Js/ForgotPass.js"></script>
+    <script type="text/js" src="/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/public/css/SignUpStyle.css" type="text/css"/>
+    <title>Login form</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- signup form -->
+      <form action="/LoginPage" id="form" class="form" method="post">
+        <a href="" style="text-decoration: none;">
+        <h2><strong id="Boost-IoT-Club">Boost-IoT-Club</strong></h2></a>
+        <h2>Login</h2>
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="text" name="useremail"  id="email" placeholder="Enter email" required />
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password"  placeholder="Enter password" required />
+          <small>Error message</small>
+        </div>
+        <button type="submit" id="submit-btn">Submit</button></a>
+      </form>
+      <div class="footer">
+        <button type="button" id="sign-in-google">
+          <i class="fa fa-google" aria-hidden="true"></i>
+          Sign In With Google
+        </button>
+      <!--forgot password and create new account-->
+      <div class="login-footer">
+          <a href="../public/ForgotPass.html" style="text-decoration: none; color: #009688;"><span id="forget-password">Forgot Password</span></a>
+          <a href="../public/SignUp.html"><span class="new-account" style="text-decoration: none; color: #009688;"><span id="forget-password">Create a new account</span></a>
+      </div>
+      </div>
+    </div>
+        <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+        <script  type="text/js" src="/index.js"></script>
+        <script type="module" src="/Js/LoginPage.js"></script>
+  </body>
+</html>

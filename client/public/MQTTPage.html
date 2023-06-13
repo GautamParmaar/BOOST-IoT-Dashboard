@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/public/css/MQTT.css" type="text/css"/>
+    <title>Connect Your Device</title>     
+  </head>
+  <body>
+    <div class="container">
+      <!-- signup form -->
+      <form action="/MQTTPage" id="form" class="form" method="post">
+        <a href="/client/public/index.html" style="text-decoration: none;"><h2><strong id="Boost-IoT-Club">Boost-IoT-Club</strong></h2></a>
+        <h2>Connect to MMT-02 Notice Board</h2>
+          <div class="form-control">
+            <label for="Topic">Topic Name</label>
+            <input type="text" name="Topic" id="Topic"  placeholder="Enter Topic Name" required/>
+            <small>Error message</small>
+          </div>
+          <div class="form-control">
+            <label for="message">Message</label>
+            <input type="text" name="message" id="message"  placeholder="Enter message" required/>
+            <small>Error message</small>
+          </div>
+          <div>
+           <marquee id="board-msg" behavior="scroll" scrollamount="10" direction="left"></marquee>
+          </div>
+        <div style="padding-bottom: 20px;">
+          <button type="submit" id="submit-btn">Submit</button></a>
+        </div>
+        
+      </form>
+    </div>
+    <script type="text/js" src="/index.js"></script>
+
+    <!-- internal javascript -->
+<script type="module" src="/Js/MQTTPage.js">
+</script>
+  </body>
+</html>

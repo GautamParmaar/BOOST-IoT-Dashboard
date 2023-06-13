@@ -1,0 +1,107 @@
+body{
+    background-color: #0e211d;
+}
+
+.custom-nav{
+    height: 5rem;
+    background-color: #009688;
+}
+
+#main-img{
+    width: 35rem;
+    padding-left: 2rem;
+}
+
+.text-size{
+    font-size: 1.3em;
+}
+
+.mg-top-heading{
+    margin-top: 20%;
+}
+
+.dropdown-menu-color{
+
+    background-color: #0e211d;
+}
+.text-color-dropdown{
+    color: aliceblue;
+}
+
+/* boost image - logo */
+#logo{
+    max-height: 20%;
+    max-width: 20%;
+    margin-right: auto;
+}
+
+#logo-div{
+    margin-right: 50px;
+}
+
+.vertical-line{
+    border: 1px solid aliceblue;
+    height: 30px;
+    position: relative;
+    margin-top: 5px;
+}
+
+#card-container{
+    margin-top : 7rem;
+    padding-left: 3rem;
+    display: flex;
+    justify-items: center;
+    padding-top: 2rem;
+    background-color: #009688;
+    padding-bottom: 2rem;
+}
+.card{
+    background-color: #009688;
+    border-radius: 1rem;
+    border-width: 0.2rem;
+    width: 22rem;
+}
+
+.card :hover{
+    background-color: #0e211d;
+    color: #009688;
+}
+.card-text{
+    font-size: small;
+    font-weight: lighter;
+}
+.card-btn{
+    background-color: #0e211d;
+    text-decoration: solid;
+    color: white;
+    text-decoration: none;
+}
+
+.card-btn :hover{
+    color: #009688;
+}
+
+.card-img-top1{
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 1rem;
+    margin-left: 0.8rem;
+    width: 20rem;
+    height: 14.7rem;
+}
+
+.card-img-top1:hover{
+    background-color: #00f5e9;
+}
+
+h1{
+    color:#009688;
+    font-size: 3.5rem;
+}
+
+p{
+    color: white;
+    font-size: 1.5rem;
+}

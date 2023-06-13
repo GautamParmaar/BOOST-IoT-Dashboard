@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Firebase Auth</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/public/css/SignUpStyle.css">
+</head>
+<body>
+    <div class="container">
+        <!-- signup form -->
+        <form action="/LoginPage" id="form" class="form" method="post">
+          <a href="" style="text-decoration: none;">
+          <h2><strong id="Boost-IoT-Club">Boost-IoT-Club</strong></h2></a>
+          <h2>OTP Verification</h2>
+          <div class="form-control" >
+            <label for="phoneNo" >Phone Number</label>
+            <div id="form-phoneNo"><input type="text" id="phoneNo" value="+91" placeholder="phone number..."></div>
+            <div id="recaptcha"></div>
+            <button id="send">Send OTP</button>        
+          </div>
+          <div class="form-control">
+            <label for="code"  id="OTP-Label">Enter OTP</label>
+            <input type="text" id="code" placeholder="enter code here..." style="display:none;">
+            <button id="getUser" style="display:none;">Verify</button>      
+          </div>
+        </form>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+    <script type="module">
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            // your firebase config file goes here
+            apiKey: "AIzaSyBbNE2JegNzLfgIjJVr6562V-RpJbvKMV4",
+            authDomain: "boost-iot-club-project.firebaseapp.com",
+            databaseURL:"https://boost-iot-club-project-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "boost-iot-club-project",
+            storageBucket: "boost-iot-club-project.appspot.com",
+            messagingSenderId: "72693946292",
+            appId: "1:72693946292:web:18f76a0022464bda00c4e1",
+            measurementId: "G-LGW5GH3X6Z",
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script type="module" src="/Js/recaptcha.js">
+    </script>
+    <script type="text/js" src="/index.js"></script>
+</body>
+</html>

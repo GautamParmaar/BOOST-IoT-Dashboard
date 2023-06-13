@@ -1,0 +1,287 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+
+}
+body{
+    background-color: rgb(0, 0, 0);
+}
+img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.logo-img{
+    max-width: 100px;
+    margin: auto;
+    padding: 1em 0 0 0;
+}
+.logo{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.primary-nav-ul , .secondary-nav-ul{
+    list-style: none;
+    text-align: center;
+    padding: 1em;
+}
+.primary-nav-ul{
+    padding-bottom: 0;
+}
+.primary-nav-ul li,.secondary-nav-ul li{
+    margin-bottom: .5em;
+    color: white;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+.li-items-i , .li-items-ii{
+    color: white;
+    text-decoration: none;    
+    font-size: 1rem;
+}
+.li-items-i{
+    padding: .4em;
+    border: 2px solid #089688;
+    border-radius: 15px;
+}
+.primary-nav-ul li{
+    margin-bottom: 1.5em;
+}
+.li-items-i:hover,.li-items-i:focus , .li-items-ii:hover,.li-items-ii:focus{
+    color: #089688;
+    
+}
+
+
+.heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 0 auto;
+    padding: .5em;
+    text-align: center;
+}
+
+.primary-img{
+    width: 100%;
+   
+}
+.primary-heading h2{
+    color: #089688;
+    padding: .5em 0;
+    font-size: 3rem;
+}
+.secondary-heading{
+    color: #FFF;
+   
+    padding: 0 0 1em 0;
+    line-height: 1.4em;
+    font-size: 1.4rem;
+}
+.b-heading h1{
+    color: #089688;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 1em 0 .5em 0;
+}
+.pi-head{
+    background-color: #089688;
+    text-align: left;
+    padding: 1em;
+    color: #FFF;
+    font-size: 1.2rem;
+    border-radius: 10px 10px 0 0 ; 
+}
+.pi-row{
+    margin-bottom: .5em;
+}
+.pi-description{
+  
+    color: #FFF;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 1em;
+    border-bottom: 3px solid #089688;
+    border-left: 3px solid #089688;
+    border-right: 3px solid #089688;
+}
+
+.about-img{
+    display: none;
+    max-width: 100%;
+    padding: 1em ;
+}
+.about-text{
+    color: #FFF;
+    font-size: 1.1rem;
+    background-color: #089688;
+    text-align:left;
+    padding: 2em;
+    margin: 1em;
+    border-radius: 8px;
+   
+}
+.testimonial-box{
+    margin: .2em 0 0 1em;
+   display: grid;
+   grid-auto-columns: 90%;
+   grid-auto-flow: column;
+   overflow-x: auto;
+   overscroll-behavior-inline: contain;
+}
+
+.t-row{
+    border-radius: 10px;
+    padding: 2em;
+    color: #FFF;
+    background-color: #089688;
+    margin-right: 2em;
+    
+
+}
+.t-row h2{
+    padding: 0 0 1em 0;
+}
+
+
+
+@media (min-width:700px) {
+   
+    
+    .primary-nav-ul{
+       justify-content: center;
+        display: flex;
+    }
+    .secondary-nav-ul{
+        justify-content: center;
+        display: flex;
+       
+    }
+    .primary-nav-ul li,.secondary-nav-ul li{
+      margin:  .4em;
+    }
+   
+    .product-info{
+        margin: 1em;
+    }
+    .pi-body{
+        display: flex;
+        max-width: 1000px;
+        margin: 0 auto;
+       
+    }
+    .pi-row + .pi-row{
+        margin-left: .5em;
+    }
+    .about-text{
+        max-width: 1200px;
+        margin: 1em ;
+    }
+    .testimonial-box{
+       
+       grid-auto-columns: 40%;
+       
+    }
+}
+
+
+@media (min-width:1122px){
+ 
+    nav{
+        display: flex;
+        width: 100%;
+    }
+    .nav-main{
+        display: flex;
+         width: 100%;
+        justify-content: center;
+    }
+    .logo-img{
+        width: 180px ;
+        margin:  0 .5em 0 5em;
+    }
+    .primary-nav-ul li{
+
+    margin-right: 2em;
+
+    }
+    .primary-nav-ul{
+        margin-right: 10rem;
+    }
+    .secondary-nav-ul{
+        margin-left: 5rem;
+        justify-content: space-between;
+    }
+    
+    
+
+
+    
+.heading{
+ 
+    
+    display: flex;
+    flex-direction: row-reverse;
+    min-height: 500px;
+    justify-content: space-between;
+    margin: 2em 5em 2em 5em;
+    padding: 2em 5em;
+   
+}
+.b-heading{
+    margin-bottom: 2em;
+}
+.primary-text{
+  margin-left: 4em;  
+  align-self: center;
+  width: 40%;
+}
+.primary-img{
+    align-self: center;
+    width: 50%;
+}
+.primary-heading{
+    font-size: 1.4rem;
+    text-align: left;
+}
+.secondary-heading{
+    text-align: left;
+}
+
+.about-us{
+    max-width: 1200px;
+    margin: auto;
+}
+.about-img{
+    display: block;
+    width: 22%;
+    align-self: center;
+}
+.about-main{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+.about-text{
+    width: 60%;
+    padding: 3em;
+}
+
+
+.testimonials{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.testimonial-box::-webkit-scrollbar{
+    width: 0;
+}
+.testimonial-box{
+       
+    grid-auto-columns: 30%;
+    
+ }
+
+}
