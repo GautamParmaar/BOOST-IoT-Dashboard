@@ -8,7 +8,7 @@ const ejs = require("ejs");
 const axios = require("axios");
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('1f499fbc4dad4dd5bebf0ee2cd3e387d');
-// const serverless = require("serverless-http")
+const serverless = require("serverless-http")
 const router = express.Router();
 
 
