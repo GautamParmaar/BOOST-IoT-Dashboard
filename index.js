@@ -276,28 +276,23 @@ client.on('error', function (error) {
 
 
 // _--------------------NewsAPI------------------------
-
-
-
-
-})
+let responseNews;
 
 app.get('/News',async(req,res)=>{
   
-  var api_url="https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=1f499fbc4dad4dd5bebf0ee2cd3e387d"
-  const news_get=await axios.get(api_url);
+  console.log("Get News API");
+  var api_url="https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=1f499fbc4dad4dd5bebf0ee2cd3e387d"
+  const news_get= await axios.get(api_url);
   console.log(news_get.data.articles);
-  // console.log(news_get.data.articles[1].source.name)
-  return res.render(path.join(__dirname,"/client/public/News",),{employee:news_get.data.articles});
-  
-  
-    
-    
-   
-  })
-  
+  console.log(news_get.data.articles[1].source.name)
+          return res.render(path.join(__dirname,"/client/public/News.ejs",),{employee:news_get.data.articles});
 
-const port1 = 3000;
+    // return res.render(path.join(__dirname,"../client/public/News",));
+  })
+
+})
+
+const port1 = process.env.port1;
 
 app.listen(3000, function () {
   console.log(`server is running on the port ${port1}!`);
