@@ -1,6 +1,6 @@
-body{
+/* body{
     background-color: #0e211d;
-}
+} */
 
 .custom-nav{
     height: 5rem;
@@ -77,9 +77,9 @@ body{
     text-decoration: none;
 }
 
-.card-btn :hover{
+/* .card-btn :hover{
     color: #009688;
-}
+} */
 
 .card-img-top1{
     padding-top: 0.5rem;
@@ -94,7 +94,7 @@ body{
 
 /* .card-img-top1:hover{
     background-color: #00f5e9;
-}
+} */
 
 h1{
     color:#009688;
@@ -104,4 +104,4 @@ h1{
 p{
     color: white;
     font-size: 1.5rem;
-} */
+}

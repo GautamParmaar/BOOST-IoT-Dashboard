@@ -285,7 +285,7 @@ let responseNews;
   app.get('/News',async(req,res)=>{
   
     console.log("Get News API");
-    var api_url="https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=1f499fbc4dad4dd5bebf0ee2cd3e387d"
+    var api_url="https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=1f499fbc4dad4dd5bebf0ee2cd3e387d"
     const news_get= await axios.get(api_url);
     console.log(news_get.data.articles);
     console.log(news_get.data.articles[1].source.name)
