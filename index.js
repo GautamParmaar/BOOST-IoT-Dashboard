@@ -294,7 +294,7 @@ let responseNews;
 
 const port1 = process.env.port1;
 
-app.listen(3000, function () {
+app.listen(3001, function () {
   console.log(`server is running on the port ${port1}!`);
 });
 
