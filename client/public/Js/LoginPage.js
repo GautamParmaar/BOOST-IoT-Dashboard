@@ -1,12 +1,12 @@
 const firebaseConfig = {
-  apiKey: process.env.apiKey,
-  authDomain: process.env.authDomain,
-  databaseURL: process.env.databaseURL,
-  projectId: process.env.projectId,
-  storageBucket:process.env.storageBucket,
-  messagingSenderId:process.env.messagingSenderId,
-  appId: process.env.appId,
-  measurementId: process.env.measurementId
+  apiKey: "AIzaSyBbNE2JegNzLfgIjJVr6562V-RpJbvKMV4",
+  authDomain: "boost-iot-club-project.firebaseapp.com",
+  databaseURL: "https://boost-iot-club-project-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "boost-iot-club-project",
+  storageBucket: "boost-iot-club-project.appspot.com",
+  messagingSenderId: "72693946292",
+  appId: "1:72693946292:web:18f76a0022464bda00c4e1",
+  measurementId: "G-LGW5GH3X6Z"
 };
         import { initializeApp} from "https://www.gstatic.com/firebasejs/9.4.1/firebase-app.js";
         import { getAuth,signInWithPopup, GoogleAuthProvider,signInWithRedirect,getRedirectResult } from "https://www.gstatic.com/firebasejs/9.4.1/firebase-auth.js";
