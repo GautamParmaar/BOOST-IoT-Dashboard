@@ -62,10 +62,10 @@
     width: 22rem;
 }
 
-.card :hover{
+/* .card :hover{
     background-color: #0e211d;
     color: #009688;
-}
+} */
 .card-text{
     font-size: small;
     font-weight: lighter;
@@ -77,9 +77,9 @@
     text-decoration: none;
 }
 
-/* .card-btn :hover{
+.card-btn :hover{
     color: #009688;
-} */
+}
 
 .card-img-top1{
     padding-top: 0.5rem;
@@ -100,8 +100,16 @@ h1{
     color:#009688;
     font-size: 3.5rem;
 }
+h2{
+    color: black;
+    font-size: 1.8rem;
+}
 
 p{
     color: white;
     font-size: 1.5rem;
+}
+.text2{
+    font-size: 1.0rem;
+    font-weight: 700;
 }
