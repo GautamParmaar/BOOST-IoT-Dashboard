@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/public/css/index.css">
+  <link rel="stylesheet" href="/public/css/TimeTable.css">
+  <title>Home Page</title>
+</head>
+
+<body>
+  <section>
+    <nav class="navbar navbar-expand-lg navbar-dark text-white custom-nav ">
+      <div class="container-fluid">
+        <!-- <div id="logo-div">
+            <img src="" id="logo" alt="logo">
+          </div> -->
+        <a class="navbar-brand m-3 text-size" href="#">Boost_IoT_Club</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse m-5 text-lg-center" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/News">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">FAQs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- this is the time table area-->
+    <section>
+
+      <div id="table-heading" class="container">
+        <h3>Time-Table For Section B</h3>
+      </div>
+
+      <div class="container">
+        <table id="time-table" class="table table-bordered table-responsive-md table-dark">
+          <thead class="table-dark text-center">
+            <tr>
+              <th scope="col">S.No</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Faculty</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider text-center table-light">
+            <tr>
+              <th id="SerialNo1">1</th>
+              <td id="Date1">01/04/2023</td>
+              <td id="Time1">12:00</td>
+              <td id="Subject1">IOT</td>
+              <td id="Faculty1">Anand Kumar Payasi</td>
+              <td id="Action1">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              data-bs-whatever="@mdo">Edit</button>
+                <button id="delete-btn1" class="btn btn-primary">Update</button>
+              </td>
+            </tr>
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="EditModal"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="EditModal">Edit Record</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/TimeTable" method="post">
+                      <div class="mb-3">
+                        <label for="Date" class="col-form-label">Date:</label>
+                        <input type="text" class="form-control" id="Date" name="Date">
+                      </div>
+                      <div class="mb-2">
+                        <label for="Time" class="col-form-label">Time:</label>
+                        <input class="form-control" id="Time" name="Time"></input>
+                      </div>
+                      <div class="mb-2">
+                        <label for="Subject" class="col-form-label">Subject:</label>
+                        <input class="form-control" id="Subject" name="Subject"></input>
+                      </div>
+                      <div class="mb-2">
+                        <label for="Faculty" class="col-form-label">Faculty:</label>
+                        <input class="form-control" id="Faculty" name="Faculty"></input>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Save Changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <tr>
+                    <th id="SerialNo2">2</th>
+                    <td id="Date2">02/04/2023</td>
+                    <td id="Time2">01:00</td>
+                    <td id="Subject2">Networking</td>
+                    <td id="Faculty2">Jeetu Parmar</td>
+                    <td id="Status2">Inactive</td>
+                    <td id="Action2">
+                        <button id="edit-btn2">Edit</button>
+                        <button id="delete-btn2">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th id="SerialNo3">3</th>
+                    <td id="Date3">03/04/2023</td>
+                    <td id="Time3">02:00</td>
+                    <td id="Subject3">Data Science</td>
+                    <td id="Faculty3">Sadhak Sir</td>
+                    <td id="Status3">Inactive</td>
+                    <td>
+                        <button id="edit-btn3">Edit</button>
+                        <button id="delete-btn3">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th id="SerialNo4">4</th>
+                    <td id="Date4">04/04/2023</td>
+                    <td id="Time4">03:00</td>
+                    <td id="Subject4">Web Development</td>
+                    <td id="Faculty4">Yash Jounwar</td>
+                    <td id="Status4">Inactive</td>
+                    <td>
+                        <button id="edit-btn4">Edit</button>
+                        <button id="delete-btn4">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th id="SerialNo5">5</th>
+                    <td id="Date5">04/04/2023</td>
+                    <td id="Time5">03:00</td>
+                    <td id="Subject5">Web Development</td>
+                    <td id="Faculty5">Yash Jounwar</td>
+                    <td id="Status5">Inactive</td>
+                    <td>
+                        <button id="edit-btn5">Edit</button>
+                        <button id="delete-btn5">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th id="SerialNo6">6</th>
+                    <td id="Date6">04/04/2023</td>
+                    <td id="Time6">03:00</td>
+                    <td id="Subject6">Web Development</td>
+                    <td id="Faculty6">Yash Jounwar</td>
+                    <td id="Status6">Inactive</td>
+                    <td>
+                        <button id="edit-btn6">Edit</button>
+                        <button id="delete-btn6">Delete</button>
+                    </td>
+                  </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+</body>
+<script type="module" src="/Js/TimeTable.js"></script>
+
+</html>

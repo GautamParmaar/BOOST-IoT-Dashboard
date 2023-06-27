@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded",function(e){
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha');
     window.recaptchaVerifier.render().then(function(widgetId) {
         window.recaptchaWidgetId = widgetId;
+        e.preventDefault();
 })
 sendbtn.addEventListener("click",(e)=>{
     var recaptchaResponse = window.grecaptcha.getResponse(window.recaptchaWidgetId);

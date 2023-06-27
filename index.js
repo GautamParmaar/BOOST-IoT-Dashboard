@@ -7,25 +7,28 @@ const cors = require("cors");
 const ejs = require("ejs");
 const axios = require("axios");
 const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('1f499fbc4dad4dd5bebf0ee2cd3e387d');
-const serverless = require("serverless-http")
-const router = express.Router();
+// const newsapi = new NewsAPI('1f499fbc4dad4dd5bebf0ee2cd3e387d');
+// const serverless = require("serverless-http")
+// const router = express.Router();
 
+const mime = require('mime');
+mime.define({ 'text/javascript': ['jsm'] });
 
 //environment variables
 require('dotenv').config();
 
 //require environment variables for firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBbNE2JegNzLfgIjJVr6562V-RpJbvKMV4",
-  authDomain: "boost-iot-club-project.firebaseapp.com",
-  databaseURL: "https://boost-iot-club-project-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "boost-iot-club-project",
-  storageBucket: "boost-iot-club-project.appspot.com",
-  messagingSenderId: "72693946292",
-  appId: "1:72693946292:web:18f76a0022464bda00c4e1",
-  measurementId: "G-LGW5GH3X6Z"
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  databaseURL: process.env.databaseURL,
+  projectId: process.env.projectId,
+  storageBucket:process.env.storageBucket,
+  messagingSenderId:process.env.messagingSenderId,
+  appId: process.env.appId,
+  measurementId: process.env.measurementId
 };
+module.exports.firebaseConfig = firebaseConfig;
 
 const {
   getDatabase,
@@ -53,7 +56,6 @@ app.use(express.static(path.join(__dirname, "/client/public")));
 app.use(cors({
   origin: '*'
 }));
-app.use("/.netlify/functions/api/", router);
 
 app.use(cors({
   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
@@ -65,13 +67,10 @@ app.set('view engine', 'ejs');
 
 //initialize the firebase with configuration
 const firebaseApp = initializeApp(firebaseConfig);
-// module.exports = firebaseConfig;
-// module.exports.firebaseConfig = firebaseConfig;
 // create the database and its reference at location of the collection "IoT-Dashboard"
 const db = getDatabase(firebaseApp);
 // firebase authentication setup
 const auth = getAuth(firebaseApp);
-
 // Set the "Content-Type" header for JavaScript files
 app.get("*.js", function (req, res) {
   res.setHeader("Content-Type", "text/js");
@@ -90,9 +89,11 @@ app.get("*.ejs",function(req,res){
   res.setHeader("content-type", "text/ejs");
 })
 
+// ---------------------GET METHODS START HERE --------------------
+
 //homepge
 app.get("/",(req,res)=>{
-  return res.sendFile(path.join(__dirname,"../dist/index.html"));
+  return res.render(path.join(__dirname,"/client/public/index.ejs"));
 })
 
 //signup page
@@ -112,9 +113,28 @@ app.get("/recaptcha",(req,res)=>{
 })
 
 app.get("/User-Dashboard",(req,res)=>{
-console.log(process.env.password)
+// console.log(process.env.password)
   return res.sendFile(path.join(__dirname,"/client/public/User_Dashboard.html"));
 })
+
+app.get("/TimeTable",(req,res)=>{
+  return res.sendFile(path.join(__dirname,"/client/public/TimeTable.html"));
+})
+
+
+app.get('/News',async(req,res)=>{
+  
+  console.log("Get News API");
+  var api_url="https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=1f499fbc4dad4dd5bebf0ee2cd3e387d"
+  const news_get= await axios.get(api_url);
+  // console.log(news_get.data.articles);
+  // console.log(news_get.data.articles[1].source.name)
+          return res.render(path.join(__dirname,"/client/public/News.ejs",),{employee:news_get.data.articles});
+  })
+
+// -----------------GET METHODS ENDS HERE ----------------
+
+  // -=-------------POST METHODS -----------------------------
 
 app.post("/Signup", (req, res) => {
   console.log("post is working");
@@ -222,6 +242,18 @@ app.post("/ForgotPass", (req, res) => {
   });
 })
 
+//----------------------- TimeTable POST METHOD----------------------
+app.post("/TimeTable",(req,res)=>{
+
+  const Date = req.body.Date;
+  const Time = req.body.Time;
+  const Subject = req.body.Subject;
+  const Faculty = req.body.Faculty;
+
+  
+})
+
+
 // ----------------------MQTT Post and Get Method --------------------
 
 app.get("/MQTTPage",(req,res)=>{
@@ -274,27 +306,14 @@ client.on('error', function (error) {
 
 // ----------------------MQTT Connection Ends Here--------------------
 
+});
 
 // _--------------------NewsAPI------------------------
-let responseNews;
 
 
-    // return res.render(path.join(__dirname,"../client/public/News",));
-  })
+const port1 = process.env.port1 ||3000;
 
-  app.get('/News',async(req,res)=>{
-  
-    console.log("Get News API");
-    var api_url="https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=1f499fbc4dad4dd5bebf0ee2cd3e387d"
-    const news_get= await axios.get(api_url);
-    console.log(news_get.data.articles);
-    console.log(news_get.data.articles[1].source.name)
-            return res.render(path.join(__dirname,"/client/public/News.ejs",),{employee:news_get.data.articles});
-  })  
-
-const port1 = process.env.port1;
-
-app.listen(3001, function () {
+app.listen(3000, function () {
   console.log(`server is running on the port ${port1}!`);
 });
 

@@ -1,0 +1,11 @@
+#time-table{
+    padding-top: 1rem;
+
+}
+
+#table-heading{
+    margin-top: 4rem;
+    background-color: aqua;
+    text-align: center;
+    width: fit-content;
+}

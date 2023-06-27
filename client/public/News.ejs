@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Section </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="/public/css/news.css">
+    <link rel="stylesheet" href="/public/css/newindex.css">
 
 </head>
 <body>
@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse m-5 text-lg-center" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/News">News</a>
@@ -55,15 +55,11 @@
       </div>
     </div>
   </nav>
-
- 
-<div class="d-flex align-items-center justify-content-center">
-  <h1><span class="badge bg-primary">NEWS</span></h1>
-</div>
- 
-  <div class="card my-2 container " style="width: 80%;">
+  
+  <div class="container mx-3 my-2"><h1><span class="badge bg-primary">NEWS</span></h1></div>
+  <div class="card my-2  " style="width: 100%;">
+    <img src=<%- employee[0].urlToImage %> class="card-img-top" alt="Image not found">
     <div class="card-body">
-      <img src=<%- employee[0].urlToImage %> class="card-img-top" alt="Image not found">
   
       <h2 class="card-title text1"><b>Source :</b><%- employee[0].source.name %></h2>
 
@@ -74,12 +70,11 @@
       <h2 class="card-text text2"> <b>publishedAt : </b><%- employee[0].publishedAt %></h2>
       <h2 class="card-text text2"> <b>Content : </b><%- employee[0].content %></h2>
 
-
       <a href=<%- employee[0].url %> class="btn btn-primary">Read Full Article</a>
     </div>
     
   </div>
-  <div class="card my-2 container  " style="width: 80%;">
+  <div class="card my-2  " style="width: 100%;">
     <img src=<%- employee[1].urlToImage %> class="card-img-top" alt="Image not found">
     <div class="card-body">
       <h2 class="card-title text1"><b>Source :</b><%- employee[1].source.name %></h2>
@@ -97,7 +92,7 @@
 
 
 
-  <div class="card container " style="width: 80%;">
+  <div class="card my-2 " style="width: 100%;">
     <img src=<%- employee[2].urlToImage %> class="card-img-top" alt="Image not found">
     <div class="card-body">
       <h2 class="card-title text1"><b>Source :</b><%- employee[2].source.name %></h2>
@@ -113,7 +108,7 @@
   </div>
 
 
-  <div class="card container" style="width: 80%;">
+  <div class="card my-2" style="width: 100%;">
     <img src=<%- employee[3].urlToImage %> class="card-img-top" alt="Image not found">
     <div class="card-body">
       <h2 class="card-title text1"><b>Source :</b><%- employee[3].source.name %></h2>
@@ -125,10 +120,10 @@
       <h2 class="card-text text2"> <b>Content : </b><%- employee[3].content %></h2>
       <a href=<%- employee[3].url %> class="btn btn-primary">Read Full Article</a>
     </div>
-    
+
   </div>
 
-  <div class="card container " style="width: 80%;">
+  <div class="card my-2 " style="width: 100%;">
     <img src=<%- employee[4].urlToImage %> class="card-img-top" alt="Image not found">
     <div class="card-body">
       <h2 class="card-title text1"><b>Source :</b><%- employee[4].source.name %></h2>
