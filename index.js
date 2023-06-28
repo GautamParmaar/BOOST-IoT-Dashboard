@@ -8,8 +8,6 @@ const ejs = require("ejs");
 const axios = require("axios");
 const NewsAPI = require('newsapi');
 
-
-
 // const newsapi = new NewsAPI('1f499fbc4dad4dd5bebf0ee2cd3e387d');
 // const serverless = require("serverless-http")
 // const router = express.Router();
@@ -41,7 +39,7 @@ const {
   child,
   get,
   once,
-  upDay
+  update
 } = require("firebase/database");
 const {
   getAuth,
@@ -62,16 +60,9 @@ app.use(cors({
   origin: '*'
 }));
 
-app.use((req, res, next) => {
-  // Middleware code
-  next(); // Make sure you call next()
-});
-
 app.use(cors({
   methods: ['GET','POST','DELETE','UPDay','PUT','PATCH']
 }));
-
-
 
 //body-parser initialization
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -129,7 +120,7 @@ app.get("/User-Dashboard",(req,res)=>{
   return res.sendFile(path.join(__dirname,"/client/public/User_Dashboard.html"));
 })
 
-app.get("/TimeTable",async(req,res)=>{
+app.get("/TimeTable",(req,res)=>{
   
 get(ref(db,"/IoT-Dashboard/TimeTable/"))
 .then((snapshot)=>{
@@ -185,23 +176,17 @@ get(ref(db,"/IoT-Dashboard/TimeTable/"))
       Subject:"AI/ML",
       Faculty:"Shyam Ranasara",
     })
+    return res.render(path.join(__dirname,"/client/public/TimeTable.ejs"));
   }
   else{
-   
-    get(ref(db,"IoT-Dashboard/TimeTable/")).then((snapshot)=>{
-      if(snapshot.exists()){
-        snapshot.forEach((childSnapshot)=>{
-          var data=childSnapshot.val();
-          console.log(data);
-          
-          return res.render(path.join(__dirname,"/client/public/TimeTable.ejs"));
-
-        })
-       
-        
-
-      }
-    })
+    if(snapshot.exists()){
+      console.log(snapshot);
+      snapshot.forEach((childSnapshot)=>{
+        var data=childSnapshot.val();
+        console.log(data.Faculty);
+     
+      return res.render(path.join(__dirname,"/client/public/TimeTable.ejs"),{employee:data});})
+    }
   }
 }).catch((error)=>{
   console.log("get method for time table error!");
@@ -209,7 +194,6 @@ get(ref(db,"/IoT-Dashboard/TimeTable/"))
 })
 
 })
-
 
 app.get('/News',async(req,res)=>{
   
@@ -341,7 +325,7 @@ app.post("/TimeTable",(req,res)=>{
   const subject = req.body.Subject;
   const faculty = req.body.Faculty;
   const serialNo = req.body.SerialNo;
-  console.log(Day);
+  console.log(day);
   const Data =  {
     SerialNo:serialNo,
     Day:day,
@@ -351,9 +335,11 @@ app.post("/TimeTable",(req,res)=>{
   }
 
 console.log("timetable post working")
-  upDay(ref(db,`/IoT-Dashboard/TimeTable/${serialNo}`),
+  update(ref(db,`/IoT-Dashboard/TimeTable/${serialNo}`),
   Data
   )
+
+  res.render(path.join(__dirname,"/client/public/TimeTable.ejs"))
 })
 
 
@@ -414,9 +400,9 @@ client.on('error', function (error) {
 // _--------------------NewsAPI------------------------
 
 
-const port1 = process.env.port1||3000;
+const port1 = process.env.port1 ||3000;
 
-app.listen(port1, function () {
+app.listen(3000, function () {
   console.log(`server is running on the port ${port1}!`);
 });
 

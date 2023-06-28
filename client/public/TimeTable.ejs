@@ -72,9 +72,9 @@
               <td id="Subject1">IOT</td>
               <td id="Faculty1">Anand Kumar Payasi</td>
               <td id="Action1">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal"
               data-bs-whatever="@mdo">Edit</button>
-                <button id="delete-btn1" class="btn btn-primary">Update</button>
+                
               </td>
             </tr>
             
@@ -84,13 +84,17 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h1 class="modal-title fs-5" id="EditModal">Edit Record</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close cross-btn" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form action="/TimeTable" method="post">
+                    <form action="/TimeTable" method="POST">
                       <div class="mb-3">
-                        <label for="Date" class="col-form-label">Date:</label>
-                        <input type="text" class="form-control" id="Date" name="Date">
+                        <label for="SerialNo" class="col-form-label">Serial No:</label>
+                        <input type="text" class="form-control" id="SerialNo" name="SerialNo">
+                      </div>
+                      <div class="mb-3">
+                        <label for="Day" class="col-form-label">Day:</label>
+                        <input type="text" class="form-control" id="Day" name="Day">
                       </div>
                       <div class="mb-2">
                         <label for="Time" class="col-form-label">Time:</label>
@@ -104,11 +108,11 @@
                         <label for="Faculty" class="col-form-label">Faculty:</label>
                         <input class="form-control" id="Faculty" name="Faculty"></input>
                       </div>
+                      <div class="modal-footer">
+                        <button id="close-btn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="save-change-btn" type="submit" class="btn btn-success">Save Changes</button>
+                      </div>
                     </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success">Save Changes</button>
                   </div>
                 </div>
               </div>
@@ -176,9 +180,12 @@
           </tbody>
         </table>
       </div>
-      <div id="json"> <h1 style="color:white;"></h1> </div>
+      <div class="container"><p style="color: white;"><%= employee.Faculty%>
+      </p>
+      </div>
     </section>
 </body>
 <script type="module" src="/Js/TimeTable.js"></script>
+<script type="text/js" src="../../index.js"></script>
 
 </html>
