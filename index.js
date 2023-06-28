@@ -7,6 +7,9 @@ const cors = require("cors");
 const ejs = require("ejs");
 const axios = require("axios");
 const NewsAPI = require('newsapi');
+
+
+
 // const newsapi = new NewsAPI('1f499fbc4dad4dd5bebf0ee2cd3e387d');
 // const serverless = require("serverless-http")
 // const router = express.Router();
@@ -28,6 +31,7 @@ const firebaseConfig = {
   appId: process.env.appId,
   measurementId: process.env.measurementId
 };
+
 module.exports.firebaseConfig = firebaseConfig;
 
 const {
@@ -37,6 +41,7 @@ const {
   child,
   get,
   once,
+  upDay
 } = require("firebase/database");
 const {
   getAuth,
@@ -57,9 +62,16 @@ app.use(cors({
   origin: '*'
 }));
 
+app.use((req, res, next) => {
+  // Middleware code
+  next(); // Make sure you call next()
+});
+
 app.use(cors({
-  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+  methods: ['GET','POST','DELETE','UPDay','PUT','PATCH']
 }));
+
+
 
 //body-parser initialization
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -117,8 +129,85 @@ app.get("/User-Dashboard",(req,res)=>{
   return res.sendFile(path.join(__dirname,"/client/public/User_Dashboard.html"));
 })
 
-app.get("/TimeTable",(req,res)=>{
-  return res.sendFile(path.join(__dirname,"/client/public/TimeTable.html"));
+app.get("/TimeTable",async(req,res)=>{
+  
+get(ref(db,"/IoT-Dashboard/TimeTable/"))
+.then((snapshot)=>{
+  console.log(snapshot.exists());
+  // query(ref(db, '/IoT-Dashboard/'), orderByChild('TimeTable/SerialNo'));
+  if(!snapshot.exists()){
+    set(ref(db,`/IoT-Dashboard/TimeTable/1`),{
+
+      SerialNo:"1",
+      Day:"Monday",
+      Time:"01:00AM",
+      Subject:"IOT",
+      Faculty:"Anand Kumar Payasi",
+    })
+
+    set(ref(db,`/IoT-Dashboard/TimeTable/2`),{
+
+      SerialNo:"2",
+      Day:"Tuesday",
+      Time:"02:00AM",
+      Subject:"Electronic",
+      Faculty:"Seema mam",
+    })
+    set(ref(db,`/IoT-Dashboard/TimeTable/3`),{
+
+      SerialNo:"3",
+      Day:"Wednesday",
+      Time:"03:00AM",
+      Subject:"Web Development",
+      Faculty:"Yash Jounwar",
+    })
+    set(ref(db,`/IoT-Dashboard/TimeTable/4`),{
+
+      SerialNo:"4",
+      Day:"Thrusday",
+      Time:"04:00AM",
+      Subject:"Networking",
+      Faculty:"Jeetu Singh Parmar",
+    })
+    set(ref(db,`/IoT-Dashboard/TimeTable/5`),{
+
+      SerialNo:"5",
+      Day:"Friday",
+      Time:"05:00AM",
+      Subject:"Data Science",
+      Faculty:"Sadhak Sir",
+    })
+    set(ref(db,`/IoT-Dashboard/TimeTable/6`),{
+
+      SerialNo:"6",
+      Day:"Saturday",
+      Time:"06:00AM",
+      Subject:"AI/ML",
+      Faculty:"Shyam Ranasara",
+    })
+  }
+  else{
+   
+    get(ref(db,"IoT-Dashboard/TimeTable/")).then((snapshot)=>{
+      if(snapshot.exists()){
+        snapshot.forEach((childSnapshot)=>{
+          var data=childSnapshot.val();
+          console.log(data);
+          
+          return res.render(path.join(__dirname,"/client/public/TimeTable.ejs"));
+
+        })
+       
+        
+
+      }
+    })
+  }
+}).catch((error)=>{
+  console.log("get method for time table error!");
+  console.log(error);
+})
+
 })
 
 
@@ -132,8 +221,8 @@ app.get('/News',async(req,res)=>{
           return res.render(path.join(__dirname,"/client/public/News.ejs",),{employee:news_get.data.articles});
   })
 
-// -----------------GET METHODS ENDS HERE ----------------
 
+// -----------------GET METHODS ENDS HERE ----------------
   // -=-------------POST METHODS -----------------------------
 
 app.post("/Signup", (req, res) => {
@@ -155,7 +244,7 @@ app.post("/Signup", (req, res) => {
             console.log(user.emailVerified);
             if (user.emailVerified) {
               // if the email is verified then add the record in the database
-              set(ref(db, "/IoT-Dashboard/users" + user.uid), {
+              set(ref(db, "/IoT-Dashboard/user/users" + user.uid), {
                 uid: user.uid,
                 username: name,
                 email: emailId,
@@ -172,7 +261,7 @@ app.post("/Signup", (req, res) => {
               clearInterval(IntervalId);
             }
             user.reload();
-          }, 5000);
+          }, 1000);
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -242,15 +331,29 @@ app.post("/ForgotPass", (req, res) => {
   });
 })
 
+
 //----------------------- TimeTable POST METHOD----------------------
+//  upDay the values in the firebase database when editing the data in the table
 app.post("/TimeTable",(req,res)=>{
 
-  const Date = req.body.Date;
-  const Time = req.body.Time;
-  const Subject = req.body.Subject;
-  const Faculty = req.body.Faculty;
+  const day = req.body.Day;
+  const time = req.body.Time;
+  const subject = req.body.Subject;
+  const faculty = req.body.Faculty;
+  const serialNo = req.body.SerialNo;
+  console.log(Day);
+  const Data =  {
+    SerialNo:serialNo,
+    Day:day,
+    Time:time,
+    Subject:subject,
+    Faculty:faculty,
+  }
 
-  
+console.log("timetable post working")
+  upDay(ref(db,`/IoT-Dashboard/TimeTable/${serialNo}`),
+  Data
+  )
 })
 
 
@@ -311,9 +414,9 @@ client.on('error', function (error) {
 // _--------------------NewsAPI------------------------
 
 
-const port1 = process.env.port1 ||3000;
+const port1 = process.env.port1||3000;
 
-app.listen(3000, function () {
+app.listen(port1, function () {
   console.log(`server is running on the port ${port1}!`);
 });
 
