@@ -1,108 +1,138 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+// import { getDatabase } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+// import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
 console.log("working");
 
-
-var Date;
-var Time;
-var Subject;
-var Faculty;
-var Status;
-var Edit;
-var Delete;
-const flag = false;
-
-for(var i=1;i<=6;i++){
-
-     Date = document.getElementById(`Date${i}`);
-     Time = document.getElementById(`Time${i}`);
-     Subject = document.getElementById(`Subject${i}`);
-     Faculty = document.getElementById(`Faculty${i}`);
-     Status = document.getElementById(`Status${i}`);
-     Edit = document.getElementById(`edit-btn${i}`);
-     Delete = document.getElementById(`delete-btn${i}`);
-
-     
-
-Edit.addEventListener("click",(e)=>{
-    flag = true;
+const closebtn = document.getElementById("close-btn");
+closebtn.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log("clicked edit button");
-    Edit.innerText = "Update"
-    Date.innerHTML = '<input id="date" type="text" placeholder="Enter Day" style = "border:none">'
-    Time.innerHTML = '<input id="time" type="text" placeholder="Enter Time" style = "border:none">'
-    Subject.innerHTML = '<input id="subject" type="text" placeholder="Enter Subject" style = "border:none">'
-    Faculty.innerHTML = '<input id="faculty" type="text" placeholder="Enter Faculty" style = "border:none">'
-    
-    //Date
-    
-    var date = document.getElementById("date");
-        var datevalue;
-        date.addEventListener("change", async function(e){
-            datevalue = await e.target.value;
-        })
-        
+    location.reload();
+})
 
-    // Time
-    var time = document.getElementById("time");
-    var timevalue;
-        time.addEventListener("change", function(e){
-            timevalue =  e.target.value;
-        })
+const savebtn = document.getElementById("save-change-btn");
+savebtn.addEventListener("click", (e) => {
+    if(alert("your record is updated successfully")){
+        e.preventDefault();
+    }
+})
+
+const timeslot = document.getElementById("Time-slot");
+const dropdown = document.getElementById("dropdown");
+const dropdown1 = document.getElementById("dropdown-1");
+const dropdown2 = document.getElementById("dropdown-2");
+const dropdown3 = document.getElementById("dropdown-3");
+const dropdown4 = document.getElementById("dropdown-4");
+const dropdown5 = document.getElementById("dropdown-5");
+const dropdown6 = document.getElementById("dropdown-6");
+const dropdown7 = document.getElementById("dropdown-7");
+const dropdown8 = document.getElementById("dropdown-8");
 
 
-    //Subject
-    var subject = document.getElementById("subject");
-    var subjectvalue;
-        subject.addEventListener("change", function(e){
-            subjectvalue = e.target.value;
-        })
-
-
-    //Faculty
-    var faculty = document.getElementById("faculty");
-    var facultyValue ;
-        faculty.addEventListener("change", function(e){
-            facultyValue = e.target.value;
-        })
-
-    //Update the value in the table
-    Edit.setAttribute("id","Update");
-    const Updatebtn = document.getElementById("Update");
-    Updatebtn.addEventListener('click', function(e){
-
-        Date.innerHTML = datevalue;
-        Time.innerHTML = timevalue;
-        Subject.innerHTML = subjectvalue;
-        Faculty.innerHTML = facultyValue;
-        Updatebtn.innerText = "Edit";
-        Updatebtn.setAttribute("id","edit-btn1");
-
-
-        // set the value in the database
-        // set(ref(db,"/IoT-Dashboard/TimeTable" + col1),{
-        // })
-        // location.reload();
-
-
+dropdown1.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.style.marginLeft = "18rem";
+    timeslot.innerText = "Time Slot: " + dropdown1.innerText;
+    const value1 = dropdown1.innerText;
+    fetch('/TimeTable', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: value1 })
     })
 })
-if(flag === true){
-    break;
-}
-}
+dropdown2.addEventListener("click", (e) => {
 
-
-
-
-
-
-
-
-
-
+    e.preventDefault();
+    dropdown.style.marginLeft = "18rem";
+    timeslot.innerText = "Time Slot: " + dropdown2.innerText;
+    const value = dropdown2.innerText;
+    fetch('/TimeTable', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: value })
+    })
+})
+dropdown3.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.style.marginLeft = "18rem";
+    timeslot.innerText = "Time Slot: " + dropdown3.innerText;
+    const value = dropdown3.innerText;
+    fetch('/TimeTable', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: value })
+    })
+})
+dropdown4.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.style.marginLeft = "18rem";
+    timeslot.innerText = "Time Slot: " + dropdown4.innerText;
+    const value = dropdown4.innerText;
+    fetch('/TimeTable', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: value })
+    })
+})
+dropdown5.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.style.marginLeft = "18rem";
+    timeslot.innerText = "Time Slot: " + dropdown5.innerText;
+    const value = dropdown5.innerText;
+    fetch('/TimeTable', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: value })
+    })
+})
+dropdown6.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.style.marginLeft = "18rem";
+    timeslot.innerText = "Time Slot: " + dropdown6.innerText;
+    const value = dropdown6.innerText;
+    fetch('/TimeTable', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: value })
+    })
+})
+dropdown7.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.style.marginLeft = "18rem";
+    timeslot.innerText = "Time Slot: " + dropdown7.innerText;
+    const value = dropdown7.innerText;
+    fetch('/TimeTable', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: value })
+    })
+})
+dropdown8.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.style.marginLeft = "18rem";
+    timeslot.innerText = "Time Slot: " + dropdown8.innerText;
+    const value = dropdown8.innerText;
+    fetch('/TimeTable', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: value })
+    })
+})
 
 

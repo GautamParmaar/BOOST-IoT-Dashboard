@@ -22,7 +22,7 @@
         <!-- <div id="logo-div">
             <img src="" id="logo" alt="logo">
           </div> -->
-        <a class="navbar-brand m-3 text-size" href="#">Boost_IoT_Club</a>
+        <a class="navbar-brand m-3 text-size" >Boost_IoT_Club</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -30,16 +30,16 @@
         <div class="collapse navbar-collapse m-5 text-lg-center" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" >Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/News">News</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" >Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">FAQs</a>
+              <a class="nav-link" >FAQs</a>
             </li>
           </ul>
         </div>
@@ -47,7 +47,6 @@
     </nav>
     <!-- this is the time table area-->
     <section>
-
       <div id="table-heading" class="container">
         <h3>Time-Table For Section B</h3>
       </div>
@@ -57,131 +56,87 @@
           <thead class="table-dark text-center">
             <tr>
               <th scope="col">S.No</th>
-              <th scope="col">Date</th>
-              <th scope="col">Time</th>
-              <th scope="col">Subject</th>
-              <th scope="col">Faculty</th>
-              <th scope="col">Action</th>
+              <th scope="col">Day</th>
+              <th scope="col">9:00AM-10:00AM</th>
+              <th scope="col">10:00AM-11:00AM</th>
+              <th scope="col">11:00AM-12:00PM</th>
+              <th scope="col">12:00PM-01:00PM</th>
+              <th scope="col">01:00PM-01:30PM</th>
+              <th scope="col">01:30PM-02:30PM</th>
+              <th scope="col">02:30PM-03:30PM</th>
+              <th scope="col">03:30PM-04:30PM</th>
+              <th scope="col">04:30PM-05:30PM</th>
             </tr>
           </thead>
           <tbody class="table-group-divider text-center table-light">
-            <tr>
-              <th id="SerialNo1">1</th>
-              <td id="Date1">01/04/2023</td>
-              <td id="Time1">12:00</td>
-              <td id="Subject1">IOT</td>
-              <td id="Faculty1">Anand Kumar Payasi</td>
-              <td id="Action1">
-                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal"
-              data-bs-whatever="@mdo">Edit</button>
-                
-              </td>
-            </tr>
-            
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="EditModal"
-              aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="EditModal">Edit Record</h1>
-                    <button type="button" class="btn-close cross-btn" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form action="/TimeTable" method="POST">
-                      <div class="mb-3">
-                        <label for="SerialNo" class="col-form-label">Serial No:</label>
-                        <input type="text" class="form-control" id="SerialNo" name="SerialNo">
+            <% for(var i=0;i<=5; i++){ %>
+              <tr>
+                <td ><%-TableData[i].id%></td>
+                <td ><%-TableData[i].Day%></td>
+                <td ><%-TableData[i].Firstcol%></td>
+                <td ><%-TableData[i].Secondcol%></td>
+                <td ><%-TableData[i].Thirdcol%></td>
+                <td ><%-TableData[i].Fourthcol%></td>
+                <td ><%-TableData[i].Fifthcol%></td>
+                <td ><%-TableData[i].Sixthcol%></td>
+                <td ><%-TableData[i].Seventhcol%></td>
+                <td ><%-TableData[i].Eighthcol%></td>
+                <td ><%-TableData[i].Ninethcol%></td>
+              </trt>
+              <% } %>
+              <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal"
+                data-bs-whatever="@mdo">Edit</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="EditModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="EditModal">Edit Record</h1>
+                        <button type="button" class="btn-close cross-btn" data-bs-dismiss="modal"
+                          aria-label="Close"></button>
                       </div>
-                      <div class="mb-3">
-                        <label for="Day" class="col-form-label">Day:</label>
-                        <input type="text" class="form-control" id="Day" name="Day">
+                      <div class="modal-body">
+                        <form action="/TimeTable" method="POST">
+                          <div class="mb-3">
+                            <label for="Serial" class="col-form-label">Serial No:</label>
+                            <input type="number" class="form-control" id="Serial" name="Serial" min="1" max="6" placeholder="Write row no" required>
+                          </div>
+                          
+                          <div class="dropdown">
+                            <div id="Time-slot"></div>
+                            <button id="dropdown" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Dropdown button
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a id="dropdown-1" class="dropdown-item" >9:00AM-10:00AM</a></li>
+                              <li><a id="dropdown-2" class="dropdown-item" >10:00AM-11:00AM</a></li>
+                              <li><a id="dropdown-3" class="dropdown-item" >11:00AM-12:00PM</a></li>
+                              <li><a id="dropdown-4" class="dropdown-item" >12:00PM-01:00PM</a></li>
+                              <li><a id="dropdown-5" class="dropdown-item" >01:30PM-02:30PM</a></li>
+                              <li><a id="dropdown-6" class="dropdown-item" >02:30PM-03:30PM</a></li>
+                              <li><a id="dropdown-7" class="dropdown-item" >03:30PM-04:30PM</a></li>
+                              <li><a id="dropdown-8" class="dropdown-item" >04:30PM-05:30PM</a></li>
+                            </ul>
+                          </div>                        
+                          <div class="mb-2">
+                            <label for="Subject" class="col-form-label">Subject:</label>
+                            <input class="form-control" id="Subject" name="Subject" placeholder="Subject"></input>
+                          </div>
+                          <div class="mb-2">
+                            <label for="Faculty" class="col-form-label">Faculty:</label>
+                            <input class="form-control" id="Faculty" name="Faculty" placeholder="Faculty"></input>
+                          </div>
+                          <div class="modal-footer">
+                            <button id="close-btn" type="button" class="btn btn-secondary"
+                              data-bs-dismiss="modal">Close</button>
+                            <button id="save-change-btn" type="submit" class="btn btn-success">Save Changes</button>
+                          </div>
+                        </form>
                       </div>
-                      <div class="mb-2">
-                        <label for="Time" class="col-form-label">Time:</label>
-                        <input class="form-control" id="Time" name="Time"></input>
-                      </div>
-                      <div class="mb-2">
-                        <label for="Subject" class="col-form-label">Subject:</label>
-                        <input class="form-control" id="Subject" name="Subject"></input>
-                      </div>
-                      <div class="mb-2">
-                        <label for="Faculty" class="col-form-label">Faculty:</label>
-                        <input class="form-control" id="Faculty" name="Faculty"></input>
-                      </div>
-                      <div class="modal-footer">
-                        <button id="close-btn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button id="save-change-btn" type="submit" class="btn btn-success">Save Changes</button>
-                      </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <!-- <tr>
-                    <th id="SerialNo2">2</th>
-                    <td id="Date2">02/04/2023</td>
-                    <td id="Time2">01:00</td>
-                    <td id="Subject2">Networking</td>
-                    <td id="Faculty2">Jeetu Parmar</td>
-                    <td id="Status2">Inactive</td>
-                    <td id="Action2">
-                        <button id="edit-btn2">Edit</button>
-                        <button id="delete-btn2">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th id="SerialNo3">3</th>
-                    <td id="Date3">03/04/2023</td>
-                    <td id="Time3">02:00</td>
-                    <td id="Subject3">Data Science</td>
-                    <td id="Faculty3">Sadhak Sir</td>
-                    <td id="Status3">Inactive</td>
-                    <td>
-                        <button id="edit-btn3">Edit</button>
-                        <button id="delete-btn3">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th id="SerialNo4">4</th>
-                    <td id="Date4">04/04/2023</td>
-                    <td id="Time4">03:00</td>
-                    <td id="Subject4">Web Development</td>
-                    <td id="Faculty4">Yash Jounwar</td>
-                    <td id="Status4">Inactive</td>
-                    <td>
-                        <button id="edit-btn4">Edit</button>
-                        <button id="delete-btn4">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th id="SerialNo5">5</th>
-                    <td id="Date5">04/04/2023</td>
-                    <td id="Time5">03:00</td>
-                    <td id="Subject5">Web Development</td>
-                    <td id="Faculty5">Yash Jounwar</td>
-                    <td id="Status5">Inactive</td>
-                    <td>
-                        <button id="edit-btn5">Edit</button>
-                        <button id="delete-btn5">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th id="SerialNo6">6</th>
-                    <td id="Date6">04/04/2023</td>
-                    <td id="Time6">03:00</td>
-                    <td id="Subject6">Web Development</td>
-                    <td id="Faculty6">Yash Jounwar</td>
-                    <td id="Status6">Inactive</td>
-                    <td>
-                        <button id="edit-btn6">Edit</button>
-                        <button id="delete-btn6">Delete</button>
-                    </td>
-                  </tr> -->
           </tbody>
         </table>
-      </div>
-      <div class="container"><p style="color: white;"><%= employee.Faculty%>
-      </p>
       </div>
     </section>
 </body>
