@@ -355,6 +355,7 @@ app.post("/ForgotPass", (req, res) => {
     });
 });
 
+
 //----------------------- TimeTable POST METHOD----------------------
 //  upDay the values in the firebase database when editing the data in the table
 app.post("/TimeTable", async (req, res) => {
@@ -362,19 +363,15 @@ app.post("/TimeTable", async (req, res) => {
   const subject = await req.body.Subject;
   const faculty = await req.body.Faculty;
   var timeslot = await req.body.value;
-  const colDetails =  `${subject} (${faculty})`;
+  const colDetails =  `${subject}(${faculty})`;
 // console.log( " column ki details: "+colDetails)
 
-if(timeslot != null){
+if(timeslot){
     // console.log("Time slot sent to database")
-    console.log("Timeee slot is not null")
-    timeslot = null;
-    console.log("Timeee slot null")
     set(ref(db,`/IoT-Dashboard/TimeTable/Value`),{
       timeslot:timeslot
     })
 }
-
 
 get(ref(db,`/IoT-Dashboard/TimeTable/Value`))
 .then((snapshot)=>{
@@ -392,9 +389,7 @@ get(ref(db,`/IoT-Dashboard/TimeTable/Value`))
             {
               Firstcol: colDetails,
             }
-            )
-      
-          
+            ) 
         }
         else if (timedata == "10:00AM-11:00AM") {
           // Perform the update operation
@@ -516,7 +511,7 @@ app.post("/MQTTPage", (req, res) => {
 
 // _--------------------NewsAPI------------------------
 
-const port1 = process.env.port1 ||3000;
+const port1 = process.env.port1;
 
 app.listen(1900, function () {
   console.log(`server is running on the port ${port1}!`);
