@@ -7,14 +7,16 @@ console.log("working");
 const closebtn = document.getElementById("close-btn");
 closebtn.addEventListener("click", (e) => {
     e.preventDefault();
-    location.reload();
 })
 
 const savebtn = document.getElementById("save-change-btn");
 savebtn.addEventListener("click", (e) => {
-    if(alert("your record is updated successfully")){
+    alert("your record is updated successfully")
+    setTimeout(() => {
+        location.reload();
         e.preventDefault();
-    }
+    }, 2000);
+     
 })
 
 const timeslot = document.getElementById("Time-slot");
