@@ -7,14 +7,16 @@
     <title>News Section </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/css/newindex.css">
+    <link rel="stylesheet" href="/public/css/news1.css">
+
 
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark text-white custom-nav ">
     <div class="container-fluid">
-      <div id="logo-div">
-        <img src="/public/images/logo.png" id="logo" alt="logo">
-      </div>
+      <!-- <div id="logo-div">
+        <img src="" id="logo" alt="logo">
+      </div> -->
       <a class="navbar-brand m-3 text-size" href="#">Boost_IoT_Club</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,22 +26,25 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/News">News</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Products
-            </a>
-            
+          
             <ul class="dropdown-menu dropdown-menu-color" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item text-color-dropdown" href="#">Smart Notice Board</a></li>
+              <li><a class="dropdown-item text-color-dropdown" href="LoginPage.html">Smart Notice Board</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item text-color-dropdown" href="#">Smart Dustbin</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item text-color-dropdown" href="#">Home Automation</a></li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/News">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/TimeTable">Schedule</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
@@ -56,87 +61,53 @@
     </div>
   </nav>
   
-  <div class="container mx-3 my-2"><h1><span class="badge bg-primary">NEWS</span></h1></div>
-  <div class="card my-2  " style="width: 100%;">
-    <img src=<%- employee[0].urlToImage %> class="card-img-top" alt="Image not found">
-    <div class="card-body">
-  
-      <h2 class="card-title text1"><b>Source :</b><%- employee[0].source.name %></h2>
+  <% for(var i=0;i<=5; i++){ %>
+    <div class="container1">
+        <div class="news-box">
+            <div class="news-flex-body">
+                <div class="news-text">                    
+                    <div class="topic">
+                
+                        <h5></h5>
+                    </div>
+                    
+                    <div class="topic">
+                        <h1><%- employee[i].title %> </h1>
+                    </div>
 
-      <h2 class="card-title text1"><b>Title :</b><%- employee[0].title %></h2>
-      <h2 class="card-text text2"> <b>Author : </b><%- employee[0].author %></h2>
+                    <div class="topic">
+                        <p><b>Description: </b><%- employee[i].description %></p>
+                    </div>
+                      <div class="topic">
+                        <p><b>Source :</b><%- employee[i].source.name %></p>
+                    </div>
+                    <div class="topic">
+                        <p> <b>publishedAt : </b><%- employee[i].publishedAt %></p>
+                    </div>
 
-      <h2 class="card-text text2"> <b>Description : </b><%- employee[0].description %></h2>
-      <h2 class="card-text text2"> <b>publishedAt : </b><%- employee[0].publishedAt %></h2>
-      <h2 class="card-text text2"> <b>Content : </b><%- employee[0].content %></h2>
+                    <div class="learn-button">
+                        <button class="btn btn-primary"><a class="color" href=<%- employee[i].url %> >Read Full Article</a></button>
+                    </div>
+                
+                </div>
 
-      <a href=<%- employee[0].url %> class="btn btn-primary">Read Full Article</a>
+                <div class="news-image card ">
+                    <div class="img card-img-top">
+                        <img src=<%- employee[i].urlToImage %> alt="Image not found  ">
+                       
+                    </div>
+                </div>
+               
+
+            </div>
+            
+        </div>
+       
     </div>
+    <% } %>
+
+
     
-  </div>
-  <div class="card my-2  " style="width: 100%;">
-    <img src=<%- employee[1].urlToImage %> class="card-img-top" alt="Image not found">
-    <div class="card-body">
-      <h2 class="card-title text1"><b>Source :</b><%- employee[1].source.name %></h2>
-      <h2 class="card-title text1"><b>Title :</b><%- employee[1].title %></h2>
-      <h2 class="card-text text2"> <b>Author: </b><%- employee[1].author %></h2>
-
-      <h2 class="card-text text2"> <b>Description: </b><%- employee[1].description %></h2>
-      <h2 class="card-text text2"> <b>publishedAt : </b><%- employee[1].publishedAt %></h2>
-      <h2 class="card-text text2"> <b>Content : </b><%- employee[1].content %></h2>
-      <a href=<%- employee[1].url %> class="btn btn-primary">Read Full Article</a>
-
-      
-    </div>
-  </div>
-
-
-
-  <div class="card my-2 " style="width: 100%;">
-    <img src=<%- employee[2].urlToImage %> class="card-img-top" alt="Image not found">
-    <div class="card-body">
-      <h2 class="card-title text1"><b>Source :</b><%- employee[2].source.name %></h2>
-      <h2 class="card-title text1"><b>Title :</b><%- employee[2].title %></h2>
-      <h2 class="card-text text2"> <b>Author: </b><%- employee[2].author %></h2>
-
-      <h2 class="card-text text2"> <b>Description: </b><%- employee[2].description %></h2>
-      <h2 class="card-text text2"> <b>publishedAt : </b><%- employee[2].publishedAt %></h2>
-      <h2 class="card-text text2"> <b>Content : </b><%- employee[2].content %></h2>
-      <a href=<%- employee[2].url %> class="btn btn-primary">Read Full Article</a>
-    </div>
-    
-  </div>
-
-
-  <div class="card my-2" style="width: 100%;">
-    <img src=<%- employee[3].urlToImage %> class="card-img-top" alt="Image not found">
-    <div class="card-body">
-      <h2 class="card-title text1"><b>Source :</b><%- employee[3].source.name %></h2>
-      <h2 class="card-title text1"><b>Title :</b><%- employee[3].title %></h2>
-      <h2 class="card-text text2"> <b>Author: </b><%- employee[3].author %></h2>
-
-      <h2 class="card-text text2"> <b>Description: </b><%- employee[3].description %></h2>
-      <h2 class="card-text text2"> <b>publishedAt : </b><%- employee[3].publishedAt %></h2>
-      <h2 class="card-text text2"> <b>Content : </b><%- employee[3].content %></h2>
-      <a href=<%- employee[3].url %> class="btn btn-primary">Read Full Article</a>
-    </div>
-
-  </div>
-
-  <div class="card my-2 " style="width: 100%;">
-    <img src=<%- employee[4].urlToImage %> class="card-img-top" alt="Image not found">
-    <div class="card-body">
-      <h2 class="card-title text1"><b>Source :</b><%- employee[4].source.name %></h2>
-      <h2 class="card-title text1"><b>Title :</b><%- employee[4].title %></h2>
-      <h2 class="card-text text2"> <b>Author: </b><%- employee[4].author %></h2>
-
-      <h2 class="card-text text2"> <b>Description: </b><%- employee[4].description %></h2>
-      <h2 class="card-text text2"> <b>publishedAt : </b><%- employee[4].publishedAt %></h2>
-      <h2 class="card-text text2"> <b>Content : </b><%- employee[4].content %></h2>
-      <a href=<%- employee[4].url %> class="btn btn-primary">Read Full Article</a>
-    </div>
-    
-  </div>
 
 
   
