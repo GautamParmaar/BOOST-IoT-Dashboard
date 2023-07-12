@@ -12,6 +12,55 @@
 
 </head>
 <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark text-white custom-nav ">
+    <div class="container-fluid">
+      <!-- <div id="logo-div">
+        <img src="" id="logo" alt="logo">
+      </div> -->
+      <a href="#"><img id="logo" src="logo.png" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse m-5 text-lg-center" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          
+            <ul class="dropdown-menu dropdown-menu-color" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item text-color-dropdown" href="LoginPage.html">Smart Notice Board</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-color-dropdown" href="#">Smart Dustbin</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-color-dropdown" href="#">Home Automation</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/News">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/TimeTable">Schedule</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">FAQs</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <button class="btn"><a class="nav-item" href="../public/LoginPage.html"><li class="nav-item text-white">Login</li></a></button>
+          <div class="vertical-line"></div>
+          <button class="btn"><a class="nav-item href="../public/SignUp.html"><li class="nav-item text-white">SignUp</li></a></button>
+        </ul>
+      </div>
+    </div>
+  </nav>
   
   
   <% for(var i=0;i<=5; i++){ %>
@@ -28,7 +77,7 @@
                         <h1><%- employee[i].title %> </h1>
                     </div>
 
-                    <div class="topic">
+                    <div class="topic description">
                         <p><b>Description: </b><%- employee[i].description %></p>
                     </div>
                       <div class="topic">
@@ -44,7 +93,7 @@
                 
                 </div>
 
-                <div class="news-image card ">
+                <div class="news-image card">
                     <div class="img card-img-top">
                         <img src=<%- employee[i].urlToImage %> alt="Image not found  ">
                        
